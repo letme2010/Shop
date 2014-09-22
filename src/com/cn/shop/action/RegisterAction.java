@@ -26,18 +26,18 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 	
 	private UserService userService;
 	
-	//»ñµÄsession
+	//ï¿½ï¿½ï¿½session
 	private Map<String, Object> session;
 	
 
 	
-	//ÓÊ¼þ×¢²á
+	//ï¿½Ê¼ï¿½×¢ï¿½ï¿½
 	
 	private EmailAttachmentSender emailSender = new EmailAttachmentSender( );
 	
 	private String username;
 	
-	//¶¯Ì¬ÑéÖ¤Âë
+	//ï¿½ï¿½Ì¬ï¿½ï¿½Ö¤ï¿½ï¿½
 	
 	private HttpServletRequest request;
 	
@@ -46,7 +46,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 	
 	
 	
-	//ÓÃ»§×¢²á
+	//ï¿½Ã»ï¿½×¢ï¿½ï¿½
 	
 	
 	public String userRegister( )
@@ -54,7 +54,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 		
 		session = (Map)ActionContext.getContext().getSession();
 		
-		//ÐÞ¸Äbug ÐÞ¸Äsession»ñµÃ²»ÎÈ¶¨ÐÔ 
+		//ï¿½Þ¸ï¿½bug ï¿½Þ¸ï¿½sessionï¿½ï¿½Ã²ï¿½ï¿½È¶ï¿½ï¿½ï¿½ 
 		
 		/*String rand = ""; 
 				
@@ -65,7 +65,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 			rand =" ";
 		}
 		
-		System.out.println("ÑéÖ¤Âë"+ rand);
+		System.out.println("ï¿½ï¿½Ö¤ï¿½ï¿½"+ rand);
 		
 		
 		
@@ -78,7 +78,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 		
 		if(( p1 != p2 ) || ( p1 == 0 )  )
 		{
-			ret = "reset"; //ÖØÐÂ½øÈë×¢²áÒ³Ãæ
+			ret = "reset"; //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½
 		}
 		//else if( (!userDTO.getRand().equals(rand ) ) || userDTO.getRand() == null  )
 		
@@ -87,33 +87,33 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 		
 		else if( ( !rand.equals(userDTO.getRand() )  ) ||  userDTO.getRand() == null  )
 		{
-			ret = "reset"; //ÖØÐÂ½øÈë×¢²áÒ³Ãæ
+			ret = "reset"; //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½
 		}*/
 		
 		
-				//session Ò»Ö±ÓÐbug ×¢Òâ 2014.8.30
+				//session Ò»Ö±ï¿½ï¿½bug ×¢ï¿½ï¿½ 2014.8.30
 		
 				String rand = (String) request.getSession().getAttribute("rand");
 				
-				System.out.println("ÑéÖ¤Âë"+ rand);
+				System.out.println("ï¿½ï¿½Ö¤ï¿½ï¿½"+ rand);
 				
 					
 				String ret = "";
 				
 				if(( userDTO.getPassword1() != userDTO.getPassword2() )  )
 				{
-					ret = "reset"; //ÖØÐÂ½øÈë×¢²áÒ³Ãæ
+					ret = "reset"; //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½
 				}
 				//else if( (!userDTO.getRand().equals(rand ) ) || userDTO.getRand() == null  )
 				
-				//ÐÞ¸Äbug 2014.8.29
+				//ï¿½Þ¸ï¿½bug 2014.8.29
 				else if( (!rand.equals(userDTO.getRand())) || userDTO.getRand() == null )
 				{
-					ret = "reset"; //ÖØÐÂ½øÈë×¢²áÒ³Ãæ
+					ret = "reset"; //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½
 				}
 				else if( ( !rand.equals(userDTO.getRand() )  ) ||  userDTO.getRand() == null  )
 				{
-					ret = "reset"; //ÖØÐÂ½øÈë×¢²áÒ³Ãæ
+					ret = "reset"; //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½
 				}
 			
 		
@@ -126,17 +126,17 @@ public class RegisterAction extends ActionSupport implements ModelDriven  {
 			
 		
 			
-			//·¢ËÍÓÊ¼þ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
 			
 			emailSender.send(user.getEmail(), user.getName() );
 			
-			ret ="verify"; //µÇÂ¼ÓÊÏäÑéÖ¤
+			ret ="verify"; //ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
 						
 			
 		}
 		else
 		{
-			ret = "reset"; //ÖØÐÂ½øÈë×¢²áÒ³Ãæ
+			ret = "reset"; //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½
 		}
 		
 						

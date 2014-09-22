@@ -63,24 +63,25 @@
 				
 				<!-- 配置server。xml  客户端使用相对地址 -->
 				
-						<img src="<%=context %>/UploadImages/${p.imageSrc }" style="height:60px; width:80px" />
+<%-- 						<img src="<%=context %>/UploadImages/${p.imageSrc }" style="height:60px; width:80px" />
+ --%>						<img src="${p.imageSrc }" style="height:60px; width:80px" />
 							
 							
 						</TD>
 						
 						<TD>
 
-						<s:property value="#p.name"/> |
+						<s:property value="#p.name"/>
 						</TD>
 						
 						<TD>
 
-						<s:property value="#p.price"/> |
+						<s:property value="#p.price"/>
 						</TD>
 						
 						<TD>
 
-						<s:property value="#p.description"/> |
+						<s:property value="#p.description"/>
 						</TD>
 						
 						
